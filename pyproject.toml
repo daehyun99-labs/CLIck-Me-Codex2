@@ -8,6 +8,7 @@ dependencies = [
     "click",
     "rich",
     "pyfiglet",
+    "python-dotenv",
 ]
 packages = [{ include = "cli_intro", from = "src" }]
 
