@@ -1,0 +1,25 @@
+[project]
+name = "cli_intro"
+version = "0.1.0"
+description = "CLI 자기소개 프로그램"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "click",
+    "rich",
+    "pyfiglet",
+]
+packages = [{ include = "cli_intro", from = "src" }]
+
+[tool.rye]
+managed = true
+
+[tool.rye.scripts]
+intro = "cli_intro.app:main"
+
+[tool.rye.dev-dependencies]
+ruff = "*"
+pytest = "*"
+
+[tool.ruff]
+line-length = 88
