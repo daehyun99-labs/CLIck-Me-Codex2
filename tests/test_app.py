@@ -29,3 +29,24 @@ def test_main_missing_profile(monkeypatch):
     result = runner.invoke(main)
     assert result.exit_code != 0
     assert "프로필 정보" in result.output
+
+
+def test_main_load_from_env_file(monkeypatch):
+    env_path = pathlib.Path(__file__).resolve().parents[1] / "config" / ".env"
+    env_content = "\n".join([
+        "DEV_NAME=파일",
+        "DEV_EMAIL=file@example.com",
+        "DEV_TITLE=파일 개발자",
+    ])
+    env_path.write_text(env_content)
+    try:
+        monkeypatch.delenv("DEV_NAME", raising=False)
+        monkeypatch.delenv("DEV_EMAIL", raising=False)
+        monkeypatch.delenv("DEV_TITLE", raising=False)
+
+        runner = CliRunner()
+        result = runner.invoke(main)
+        assert result.exit_code == 0
+        assert "파일" in result.output
+    finally:
+        env_path.unlink(missing_ok=True)

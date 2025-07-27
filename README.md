@@ -9,7 +9,8 @@
    rye sync
    ```
 
-환경 변수는 `config/.env.example` 파일을 참고하여 설정합니다.
+프로그램은 실행 시 `config/.env` 파일을 자동으로 로드합니다.
+필요한 값은 `config/.env.example` 파일을 참고하여 작성하세요.
 
 ## 사용법
 ```bash
