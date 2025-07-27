@@ -13,7 +13,7 @@
 
 ## 사용법
 ```bash
-rye run intro --details
+python -m cli_intro.app --details
 ```
 `--details` 옵션을 주면 연락처 정보가 함께 출력됩니다.
 
